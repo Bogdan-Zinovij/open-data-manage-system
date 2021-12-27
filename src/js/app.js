@@ -2,10 +2,10 @@
 
 const Fastify = require('fastify');
 const routers = require('./routes');
+const { PREFIX } = require('./config');
 
 const registerRouters = require('./utils/registerRouters');
 
-const PREFIX = 'api/v1';
 const app = Fastify({
   logger: true,
 });
