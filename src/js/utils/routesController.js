@@ -49,9 +49,7 @@ module.exports = class RoutesController {
       const newItem = await this.model.create(req.body);
       reply.status(201).send({
         status: 'success',
-        data: {
-          newItem,
-        },
+        data: { newItem },
       });
     } catch (err) {
       reply.status(400).send({
@@ -64,9 +62,7 @@ module.exports = class RoutesController {
   updateItem = async (req, reply) => {
     try {
       const { id } = req.params;
-      const item = await this.model.findOne({
-        where: { id },
-      });
+      const item = await this.model.findOne({ where: { id } });
       let updatedItem;
 
       if (!item)
@@ -74,23 +70,17 @@ module.exports = class RoutesController {
           `${this.modelName} with the specified ID does not exist`
         );
 
-      const [isUpdated] = await this.model.update(req.body, {
-        where: { id },
-      });
+      const [isUpdated] = await this.model.update(req.body, { where: { id } });
 
       if (isUpdated) {
-        updatedItem = await this.model.findOne({
-          where: { id },
-        });
+        updatedItem = await this.model.findOne({ where: { id } });
       } else {
         updatedItem = item;
       }
 
       reply.status(200).send({
         status: 'success',
-        data: {
-          updatedItem,
-        },
+        data: { updatedItem },
       });
     } catch (err) {
       reply.status(404).send({
