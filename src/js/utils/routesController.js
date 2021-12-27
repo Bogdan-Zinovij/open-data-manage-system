@@ -97,7 +97,7 @@ module.exports = class RoutesController {
 
       if (!item)
         throw new Error(
-          `Can't delete an ${this.modelName} with an id value of ${id}`
+          `Can't delete an ${this.modelName} with the specified ID`
         );
 
       await this.model.destroy({ where: { id } });
