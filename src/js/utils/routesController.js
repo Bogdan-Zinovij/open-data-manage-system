@@ -43,4 +43,21 @@ module.exports = class RoutesController {
       });
     }
   };
+
+  createNewItem = async (req, reply) => {
+    try {
+      const newItem = await this.model.create(req.body);
+      reply.status(201).send({
+        status: 'success',
+        data: {
+          newItem,
+        },
+      });
+    } catch (err) {
+      reply.status(400).send({
+        status: 'fail',
+        message: err.message,
+      });
+    }
+  };
 };
