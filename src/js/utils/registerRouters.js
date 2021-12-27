@@ -1,14 +1,15 @@
 'use strict';
 
+const { ROUTER_WORD_LENGTH } = require('../config');
+
 const registerRouters = (fastify, routers, prefix = '') => {
   if (prefix[prefix.length - 1] !== '/') prefix += '/';
 
   const routersArr = Object.keys(routers);
 
-  const extras = 'router'.length;
-
   for (const router of routersArr) {
-    const routePrefix = prefix + router.slice(0, router.length - extras);
+    const routeNameLength = router.length - ROUTER_WORD_LENGTH;
+    const routePrefix = prefix + router.slice(0, routeNameLength);
     fastify.register(routers[router], { prefix: routePrefix });
   }
 };
