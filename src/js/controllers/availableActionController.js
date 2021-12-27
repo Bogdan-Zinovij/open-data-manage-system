@@ -39,3 +39,42 @@ exports.getAvailableAction = async (req, reply) => {
     });
   }
 };
+
+exports.createAvailableAction = async (req, reply) => {
+  try {
+    const newAvailableAction = await AvailableAction.create(req.body);
+    reply.status(201).send({
+      status: 'success',
+      data: { newAvailableAction },
+    });
+  } catch (err) {
+    reply.status(404).send({
+      status: 'fail',
+      message: err.message,
+    });
+  }
+};
+
+exports.deleteAvailableAction = async (req, reply) => {
+  try {
+    const { id } = req.params;
+    const availableAction = await AvailableAction.findOne({ where: { id } });
+
+    if (!availableAction)
+      throw new Error(
+        `Can't delete an available action with an id value of ${id}`
+      );
+
+    await availableAction.destroy({ where: { id } });
+
+    reply.status(200).send({
+      status: 'success',
+      data: null,
+    });
+  } catch (err) {
+    reply.status(404).send({
+      status: 'fail',
+      message: err.message,
+    });
+  }
+};
