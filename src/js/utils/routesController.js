@@ -89,4 +89,28 @@ module.exports = class RoutesController {
       });
     }
   };
+
+  deleteItemById = async (req, reply) => {
+    try {
+      const { id } = req.params;
+      const item = await this.model.findOne({ where: { id } });
+
+      if (!item)
+        throw new Error(
+          `Can't delete an ${this.modelName} with an id value of ${id}`
+        );
+
+      await this.model.destroy({ where: { id } });
+
+      reply.status(200).send({
+        status: 'success',
+        data: null,
+      });
+    } catch (err) {
+      reply.status(404).send({
+        status: 'fail',
+        message: err.message,
+      });
+    }
+  };
 };
