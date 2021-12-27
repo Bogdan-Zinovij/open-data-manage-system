@@ -60,4 +60,43 @@ module.exports = class RoutesController {
       });
     }
   };
+
+  updateItem = async (req, reply) => {
+    try {
+      const { id } = req.params;
+      const item = await this.model.findOne({
+        where: { id },
+      });
+      let updatedItem;
+
+      if (!item)
+        throw new Error(
+          `${this.modelName} with the specified ID does not exist`
+        );
+
+      const [isUpdated] = await this.model.update(req.body, {
+        where: { id },
+      });
+
+      if (isUpdated) {
+        updatedItem = await this.model.findOne({
+          where: { id },
+        });
+      } else {
+        updatedItem = item;
+      }
+
+      reply.status(200).send({
+        status: 'success',
+        data: {
+          updatedItem,
+        },
+      });
+    } catch (err) {
+      reply.status(404).send({
+        status: 'fail',
+        message: err.message,
+      });
+    }
+  };
 };
