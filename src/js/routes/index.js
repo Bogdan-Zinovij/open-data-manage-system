@@ -11,6 +11,8 @@ const actionTypeRouter = require('./actionTypeRoutes');
 const roleRouter = require('./roleRoutes');
 const userRouter = require('./userRoutes');
 const actionRouter = require('./actionRoutes');
+const availableActionRouter = require('./availableActionRoutes');
+const grantRouter = require('./grantRoutes');
 
 module.exports = {
   availableForRouter,
@@ -24,4 +26,6 @@ module.exports = {
   roleRouter,
   userRouter,
   actionRouter,
+  availableActionRouter,
+  grantRouter,
 };

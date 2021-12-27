@@ -54,11 +54,6 @@ const associate = () => {
     sourceKey: 'id',
   });
 
-  AvailableAction.belongsTo(MetaDataKey, {
-    foreignKey: 'metaDataKey',
-    as: 'metK',
-    targetKey: 'id',
-  });
   //
   Role.hasMany(AvailableAction, {
     foreignKey: 'role',
