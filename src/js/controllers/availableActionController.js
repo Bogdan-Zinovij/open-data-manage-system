@@ -78,3 +78,36 @@ exports.deleteAvailableAction = async (req, reply) => {
     });
   }
 };
+
+exports.updateAvailableAction = async (req, reply) => {
+  try {
+    const { id } = req.params;
+    const availableAction = await AvailableAction.findOne({ where: { id } });
+
+    if (!availableAction)
+      throw new Error(`There's no available action with an id value of ${id}`);
+
+    const [affectedRowsCount] = await AvailableAction.update(req.body, {
+      where: { id },
+    });
+
+    if (!affectedRowsCount)
+      throw new Error(
+        `Available action with an id value of ${id} hasn't been updated`
+      );
+
+    const updatedRole = await AvailableAction.findOne({ where: { id } });
+
+    reply.status(200).send({
+      status: 'success',
+      data: {
+        updatedRole,
+      },
+    });
+  } catch (err) {
+    reply.status(404).send({
+      status: 'fail',
+      message: err.message,
+    });
+  }
+};
