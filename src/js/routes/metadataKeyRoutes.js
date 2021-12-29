@@ -4,11 +4,11 @@ const metadataKeyController = require('../controllers/metadataKeyController');
 
 const setMetadataKeyRoutes = (fastify, options, done) => {
   fastify
-    .get('/', metadataKeyController.getAllMetadataKeys)
-    .post('/', metadataKeyController.createMetadataKey)
-    .get('/:id', metadataKeyController.getMetadataKey)
-    .delete('/:id', metadataKeyController.deleteMetadataKey)
-    .patch('/:id', metadataKeyController.updateMetadataKey);
+    .get('/', metadataKeyController.getAllItems)
+    .post('/', metadataKeyController.createNewItem)
+    .get('/:id', metadataKeyController.getItemById)
+    .delete('/:id', metadataKeyController.deleteItemById)
+    .patch('/:id', metadataKeyController.updateItemById);
 
   done();
 };

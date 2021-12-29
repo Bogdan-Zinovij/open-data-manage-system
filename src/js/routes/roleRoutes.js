@@ -4,11 +4,11 @@ const roleController = require('../controllers/roleController');
 
 const setRoleRoutes = (fastify, options, done) => {
   fastify
-    .get('/', roleController.getAllRoles)
-    .post('/', roleController.createRole)
-    .get('/:id', roleController.getRole)
-    .delete('/:id', roleController.deleteRole)
-    .patch('/:id', roleController.updateRole);
+    .get('/', roleController.getAllItems)
+    .post('/', roleController.createNewItem)
+    .get('/:id', roleController.getItemById)
+    .delete('/:id', roleController.deleteItemById)
+    .patch('/:id', roleController.updateItemById);
 
   done();
 };
