@@ -1,15 +1,14 @@
 'use strict';
 
 const dataValueController = require('../controllers/metadataValueController');
-
 const setDataValuesRoutes = (fastify, options, done) => {
   fastify
-    .get('/', dataValueController.getAllMetadataValues)
-    .post('/', dataValueController.createMetadataValue)
+    .get('/', dataValueController.getAllItems)
+    .post('/', dataValueController.createNewItem)
 
-    .get('/:id', dataValueController.getMetadataValue)
-    .patch('/:id', dataValueController.updateMetadataValue)
-    .delete('/:id', dataValueController.deleteMetadataValue);
+    .get('/:id', dataValueController.getItemById)
+    .patch('/:id', dataValueController.updateItemById)
+    .delete('/:id', dataValueController.deleteItemById);
 
   done();
 };
