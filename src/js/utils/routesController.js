@@ -8,7 +8,7 @@ module.exports = class RoutesController {
 
   getAllItems = async (req, reply) => {
     try {
-      const items = await this.model.findAll();
+      const items = await this.model.findAll({ order: ['id'] });
       reply.status(200).send({
         status: 'success',
         results: items.length,
@@ -59,7 +59,7 @@ module.exports = class RoutesController {
     }
   };
 
-  updateItem = async (req, reply) => {
+  updateItemById = async (req, reply) => {
     try {
       const { id } = req.params;
       const item = await this.model.findOne({ where: { id } });
@@ -97,7 +97,7 @@ module.exports = class RoutesController {
 
       if (!item)
         throw new Error(
-          `Can't delete an ${this.modelName} with the specified ID`
+          `${this.modelName} with the specified ID does not exist`
         );
 
       await this.model.destroy({ where: { id } });

@@ -5,14 +5,14 @@ const dataFileController = require('../controllers/dataFileController');
 
 const setDataSetsRoutes = (fastify, options, done) => {
   fastify
-    .get('/', dataSetController.getAllDataSets)
-    .post('/', dataSetController.createDataSet)
+    .get('/', dataSetController.getAllItems)
+    .post('/', dataSetController.createNewItem)
 
     .get('/dataFiles/', dataFileController.getAllDataFiles)
 
-    .get('/:id', dataSetController.getDataSet)
-    .patch('/:id', dataSetController.updateDataSet)
-    .delete('/:id', dataSetController.deleteDataSet)
+    .get('/:id', dataSetController.getItemById)
+    .patch('/:id', dataSetController.updateItemById)
+    .delete('/:id', dataSetController.deleteItemById)
 
     .get('/:id/dataFiles/', dataFileController.getAllDataFilesInDataSet)
     .post('/:id/dataFiles/', dataFileController.createDataFile)

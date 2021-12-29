@@ -4,12 +4,12 @@ const categoryController = require('../controllers/categoryController');
 
 const setCategoriesRoutes = (fastify, options, done) => {
   fastify
-    .get('/', categoryController.getAllCategories)
-    .post('/', categoryController.createCategory)
+    .get('/', categoryController.getAllItems)
+    .post('/', categoryController.createNewItem)
 
-    .get('/:id', categoryController.getCategory)
-    .patch('/:id', categoryController.updateCategory)
-    .delete('/:id', categoryController.deleteCategory)
+    .get('/:id', categoryController.getItemById)
+    .patch('/:id', categoryController.updateItemById)
+    .delete('/:id', categoryController.deleteItemById)
 
     .get('/:id/dataSets', categoryController.getAllDataSetsInCategory);
 
