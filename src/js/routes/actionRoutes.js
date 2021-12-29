@@ -4,12 +4,12 @@ const actionController = require('../controllers/actionController');
 
 const setActionRoutes = (fastify, options, done) => {
   fastify
-    .get('/', actionController.getAllActions)
-    .post('/', actionController.createAction)
+    .get('/', actionController.getAllItems)
+    .post('/', actionController.createNewItem)
 
-    .get('/:id', actionController.getAction)
-    .delete('/:id', actionController.deleteAction)
-    .patch('/:id', actionController.updateAction);
+    .get('/:id', actionController.getItemById)
+    .delete('/:id', actionController.deleteItemById)
+    .patch('/:id', actionController.updateItemById);
 
   done();
 };

@@ -4,12 +4,12 @@ const stateController = require('../controllers/stateController');
 
 const setStateRoutes = (fastify, options, done) => {
   fastify
-    .get('/', stateController.getAllStates)
-    .post('/', stateController.createState)
+    .get('/', stateController.getAllItems)
+    .post('/', stateController.createNewItem)
 
-    .get('/:id', stateController.getState)
-    .delete('/:id', stateController.deleteState)
-    .patch('/:id', stateController.updateState);
+    .get('/:id', stateController.getItemById)
+    .delete('/:id', stateController.deleteItemById)
+    .patch('/:id', stateController.updateItemById);
 
   done();
 };

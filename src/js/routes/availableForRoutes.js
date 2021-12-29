@@ -4,12 +4,12 @@ const availableForController = require('../controllers/AvailableForController');
 
 const setAvailableForRoutes = (fastify, options, done) => {
   fastify
-    .get('/', availableForController.getAllAvailableFor)
-    .post('/', availableForController.createAvailableFor)
+    .get('/', availableForController.getAllItems)
+    .post('/', availableForController.createNewItem)
 
-    .get('/:id', availableForController.getAvailableFor)
-    .delete('/:id', availableForController.deleteAvailableFor)
-    .patch('/:id', availableForController.updateAvailableFor);
+    .get('/:id', availableForController.getItemById)
+    .delete('/:id', availableForController.deleteItemById)
+    .patch('/:id', availableForController.updateItemById);
 
   done();
 };
