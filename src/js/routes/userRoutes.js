@@ -4,12 +4,12 @@ const userController = require('../controllers/userController');
 
 const setUserRoutes = (fastify, options, done) => {
   fastify
-    .get('/', userController.getAllUsers)
-    .post('/', userController.createUser)
+    .get('/', userController.getAllItems)
+    .post('/', userController.createNewItem)
 
-    .get('/:id', userController.getUser)
-    .delete('/:id', userController.deleteUser)
-    .patch('/:id', userController.updateUser);
+    .get('/:id', userController.getItemById)
+    .delete('/:id', userController.deleteItemById)
+    .patch('/:id', userController.updateItemById);
 
   done();
 };

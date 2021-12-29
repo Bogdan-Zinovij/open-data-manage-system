@@ -4,12 +4,12 @@ const typeController = require('../controllers/typeController');
 
 const setTypeRoutes = (fastify, options, done) => {
   fastify
-    .get('/', typeController.getAllTypes)
-    .post('/', typeController.createType)
+    .get('/', typeController.getAllItems)
+    .post('/', typeController.createNewItem)
 
-    .get('/:id', typeController.getType)
-    .delete('/:id', typeController.deleteType)
-    .patch('/:id', typeController.updateType);
+    .get('/:id', typeController.getItemById)
+    .delete('/:id', typeController.deleteItemById)
+    .patch('/:id', typeController.updateItemById);
 
   done();
 };
