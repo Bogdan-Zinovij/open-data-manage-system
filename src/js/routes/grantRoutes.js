@@ -4,11 +4,11 @@ const grantController = require('../controllers/grantController');
 
 const setGrantRoutes = (fastify, options, done) => {
   fastify
-    .get('/', grantController.getAllGrants)
-    .post('/', grantController.createGrant)
-    .get('/:id', grantController.getGrant)
-    .delete('/:id', grantController.deleteGrant)
-    .patch('/:id', grantController.updateGrant);
+    .get('/', grantController.getAllItems)
+    .post('/', grantController.createNewItem)
+    .get('/:id', grantController.getItemById)
+    .delete('/:id', grantController.deleteItemById)
+    .patch('/:id', grantController.updateItemById);
 
   done();
 };

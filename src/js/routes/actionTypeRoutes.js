@@ -4,11 +4,11 @@ const actionTypeController = require('../controllers/actionTypeController');
 
 const setActionTypeRoutes = (fastify, options, done) => {
   fastify
-    .get('/', actionTypeController.getAllActionTypes)
-    .post('/', actionTypeController.createActionType)
-    .get('/:id', actionTypeController.getActionType)
-    .delete('/:id', actionTypeController.deleteActionType)
-    .patch('/:id', actionTypeController.updateActionType);
+    .get('/', actionTypeController.getAllItems)
+    .post('/', actionTypeController.createNewItem)
+    .get('/:id', actionTypeController.getItemById)
+    .delete('/:id', actionTypeController.deleteItemById)
+    .patch('/:id', actionTypeController.updateItemById);
 
   done();
 };

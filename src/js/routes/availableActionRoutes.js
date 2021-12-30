@@ -5,11 +5,11 @@ const availableActionController = require('../controllers/availableActionControl
 
 const setAvailableActionRoutes = (fastify, options, done) => {
   fastify
-    .get('/', availableActionController.getAllAvailableActions)
-    .post('/', availableActionController.createAvailableAction)
-    .get('/:id', availableActionController.getAvailableAction)
-    .delete('/:id', availableActionController.deleteAvailableAction)
-    .patch('/:id', availableActionController.updateAvailableAction);
+    .get('/', availableActionController.getAllItems)
+    .post('/', availableActionController.createNewItem)
+    .get('/:id', availableActionController.getItemById)
+    .delete('/:id', availableActionController.deleteItemById)
+    .patch('/:id', availableActionController.updateItemById);
 
   done();
 };
