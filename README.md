@@ -4,13 +4,13 @@
 <div align="center">
   <h1 align="center">ODMS REST API</h1>
   <p align="center">
-    <a href="https://github.com/othneildrew/Best-README-Template">Explore the docs &Rightarrow;</a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system">Explore the docs &Rightarrow;</a>
   </p>
 </div>
 
 ## About the project
 
-OMDS REST API - it's Node.js application which is created to model a communication with a simple web server and open data management system's database prototype and perfom basic CRUD operatins.
+OMDS REST API - it's Node.js application which is created to model a communication with a simple web server and open data management system's database prototype and to perfom basic CRUD operations.
 
 ### Built with
 
@@ -30,9 +30,11 @@ OMDS REST API - it's Node.js application which is created to model a communicati
    ```sh
    npm install
    ```
-3. Create a local instance of the database by executing `Model.sql` SQL script which is in `src/sql` directory.
+3. Got to `src/js` directory.
 
-4. Create `.env` file in the `src/js` directory and fill it with your own configuration data as follows:
+4. Create a local instance of the database by executing `Model.sql` SQL script which is in `src/sql` directory.
+
+5. Create `.env` file and fill it with your own configuration data as follows:
 
    ```sh
    MYSQL_HOST=MYSQL_HOST
@@ -44,13 +46,61 @@ OMDS REST API - it's Node.js application which is created to model a communicati
 
    ```
 
-5. Start the application:
+6. Start the application:
 
    ```sh
    npm start
    ```
 
-6. Run the tests:
+7. Run the tests:
    ```sh
    npm test
    ```
+
+## Usage
+
+All of the requests should be executed on `http://localhost:FASTIFY_PORT/`
+
+### Open endpoints
+
+Open endpoints require no Authentication.
+
+#### Dataset related
+
+Endpoints for viewing and manipulating datasets:
+
+- Create new dataset: `POST /api/v1/dataset/`
+- Get all available datasets: `GET /api/v1/dataset/`
+- Get dataset by id: `GET /api/v1/dataset/:id/`
+- Update dataset by id: `GET /api/v1/dataset/:id/`
+- Delete dataset by id: `DELETE /api/v1/dataset/:id/`
+
+#### Category related
+
+Endpoints for viewing and manipulating categories:
+
+- Create new category: `POST /api/v1/category/`
+- Get all available categories: `GET /api/v1/category/`
+- Get category by id: `GET /api/v1/category/:id/`
+- Update category by id: `GET /api/v1/category/:id/`
+- Delete category by id: `DELETE /api/v1/category/:id/`
+
+#### Datafile related
+
+Endpoints for viewing and manipulating datafiles:
+
+- Create new datafile: `POST /api/v1/datafile/`
+- Get all available datafiles: `GET /api/v1/datafile/`
+- Get datafile by id: `GET /api/v1/datafile/:id/`
+- Update datafile by id: `GET /api/v1/datafile/:id/`
+- Delete datafile by id: `DELETE /api/v1/datafile/:id/`
+
+#### MetadataKey related
+
+Endpoints for viewing and manipulating metadatakeys:
+
+- Create new metadatakey: `POST /api/v1/metadatakey/`
+- Get all available metadatakeys: `GET /api/v1/metadatakey/`
+- Get metadatakey by id: `GET /api/v1/metadatakey/:id/`
+- Update metadatakey by id: `GET /api/v1/metadatakey/:id/`
+- Delete metadatakey by id: `DELETE /api/v1/metadatakey/:id/`
