@@ -4,7 +4,7 @@ const app = require('../../app');
 const db = require('../../db/db');
 const associate = require('../../db/associate');
 
-describe('Testing endpoints for metadataKey table', () => {
+describe('Testing endpoints for role table', () => {
   beforeAll(async () => {
     associate();
     await app.ready();
@@ -15,22 +15,20 @@ describe('Testing endpoints for metadataKey table', () => {
     app.close();
   });
 
-  const metadataKeyMock = {
-    key: 'metadata key name',
-    description: 'metadata key description',
-    metaDataKey: null,
+  const roleMock = {
+    name: 'role name',
   };
 
-  test('Should create new metadata key', async () => {
+  test('Should create new role', async () => {
     const response = await app.inject({
       method: 'POST',
-      url: '/api/v1/metadataKey/',
-      body: { ...metadataKeyMock },
+      url: '/api/v1/role/',
+      body: { ...roleMock },
     });
 
     const body = JSON.parse(response.body);
     const newItem = body.data.newItem;
-    metadataKeyMock.id = newItem.id;
+    roleMock.id = newItem.id;
 
     expect(response.statusCode).toBe(201);
     expect(typeof body).toBe('object');
@@ -38,15 +36,13 @@ describe('Testing endpoints for metadataKey table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof newItem).toBe('object');
     expect(newItem).toHaveProperty('id');
-    expect(newItem).toHaveProperty('key', metadataKeyMock.key);
-    expect(newItem).toHaveProperty('description', metadataKeyMock.description);
-    expect(newItem).toHaveProperty('metaDataKey', metadataKeyMock.metaDataKey);
+    expect(newItem).toHaveProperty('name', roleMock.name);
   });
 
-  test('Should get all metadata keys', async () => {
+  test('Should get all roles', async () => {
     const response = await app.inject({
       method: 'GET',
-      url: '/api/v1/metadataKey/',
+      url: '/api/v1/role/',
     });
 
     const body = JSON.parse(response.body);
@@ -61,10 +57,10 @@ describe('Testing endpoints for metadataKey table', () => {
     expect(Array.isArray(body.data.items)).toBe(true);
   });
 
-  test('Should get metadata key by id', async () => {
+  test('Should get role by id', async () => {
     const response = await app.inject({
       method: 'GET',
-      url: `/api/v1/metadataKey/${metadataKeyMock.id}`,
+      url: `/api/v1/role/${roleMock.id}`,
     });
 
     const body = JSON.parse(response.body);
@@ -76,19 +72,17 @@ describe('Testing endpoints for metadataKey table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof body.data).toBe('object');
     expect(typeof item).toBe('object');
-    expect(item).toEqual(metadataKeyMock);
+    expect(item).toEqual(roleMock);
   });
 
-  test('Should update metadata key by id', async () => {
+  test('Should update role by id', async () => {
     const dataToUpdate = {
-      key: 'updated metadata key name',
-      description: 'updated metadata key description',
-      metaDataKey: null,
+      name: 'updated role name',
     };
 
     const response = await app.inject({
       method: 'PATCH',
-      url: `/api/v1/metadataKey/${metadataKeyMock.id}`,
+      url: `/api/v1/role/${roleMock.id}`,
       body: { ...dataToUpdate },
     });
 
@@ -101,16 +95,14 @@ describe('Testing endpoints for metadataKey table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof body.data).toBe('object');
     expect(typeof updatedItem).toBe('object');
-    expect(updatedItem).toHaveProperty('id', metadataKeyMock.id);
-    expect(updatedItem).toHaveProperty('key', dataToUpdate.key);
-    expect(updatedItem).toHaveProperty('description', dataToUpdate.description);
-    expect(updatedItem).toHaveProperty('metaDataKey', dataToUpdate.metaDataKey);
+    expect(updatedItem).toHaveProperty('id', roleMock.id);
+    expect(updatedItem).toHaveProperty('name', dataToUpdate.name);
   });
 
-  test('Should delete metadata key by id', async () => {
+  test('Should delete role by id', async () => {
     const response = await app.inject({
       method: 'DELETE',
-      url: `/api/v1/metadataKey/${metadataKeyMock.id}`,
+      url: `/api/v1/role/${roleMock.id}`,
     });
 
     const body = JSON.parse(response.body);

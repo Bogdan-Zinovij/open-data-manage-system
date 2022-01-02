@@ -4,7 +4,7 @@ const app = require('../../app');
 const db = require('../../db/db');
 const associate = require('../../db/associate');
 
-describe('Testing endpoints for metadataKey table', () => {
+describe('Testing endpoints for availableAction table', () => {
   beforeAll(async () => {
     associate();
     await app.ready();
@@ -15,22 +15,21 @@ describe('Testing endpoints for metadataKey table', () => {
     app.close();
   });
 
-  const metadataKeyMock = {
-    key: 'metadata key name',
-    description: 'metadata key description',
-    metaDataKey: null,
+  const availableActionMock = {
+    role: 1,
+    actionType: 1,
   };
 
-  test('Should create new metadata key', async () => {
+  test('Should create new available action', async () => {
     const response = await app.inject({
       method: 'POST',
-      url: '/api/v1/metadataKey/',
-      body: { ...metadataKeyMock },
+      url: '/api/v1/availableAction/',
+      body: { ...availableActionMock },
     });
 
     const body = JSON.parse(response.body);
     const newItem = body.data.newItem;
-    metadataKeyMock.id = newItem.id;
+    availableActionMock.id = newItem.id;
 
     expect(response.statusCode).toBe(201);
     expect(typeof body).toBe('object');
@@ -38,15 +37,17 @@ describe('Testing endpoints for metadataKey table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof newItem).toBe('object');
     expect(newItem).toHaveProperty('id');
-    expect(newItem).toHaveProperty('key', metadataKeyMock.key);
-    expect(newItem).toHaveProperty('description', metadataKeyMock.description);
-    expect(newItem).toHaveProperty('metaDataKey', metadataKeyMock.metaDataKey);
+    expect(newItem).toHaveProperty('role', availableActionMock.role);
+    expect(newItem).toHaveProperty(
+      'actionType',
+      availableActionMock.actionType
+    );
   });
 
-  test('Should get all metadata keys', async () => {
+  test('Should get all available actions', async () => {
     const response = await app.inject({
       method: 'GET',
-      url: '/api/v1/metadataKey/',
+      url: '/api/v1/availableAction/',
     });
 
     const body = JSON.parse(response.body);
@@ -61,10 +62,10 @@ describe('Testing endpoints for metadataKey table', () => {
     expect(Array.isArray(body.data.items)).toBe(true);
   });
 
-  test('Should get metadata key by id', async () => {
+  test('Should get available action by id', async () => {
     const response = await app.inject({
       method: 'GET',
-      url: `/api/v1/metadataKey/${metadataKeyMock.id}`,
+      url: `/api/v1/availableAction/${availableActionMock.id}`,
     });
 
     const body = JSON.parse(response.body);
@@ -76,19 +77,18 @@ describe('Testing endpoints for metadataKey table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof body.data).toBe('object');
     expect(typeof item).toBe('object');
-    expect(item).toEqual(metadataKeyMock);
+    expect(item).toEqual(availableActionMock);
   });
 
-  test('Should update metadata key by id', async () => {
+  test('Should update available action by id', async () => {
     const dataToUpdate = {
-      key: 'updated metadata key name',
-      description: 'updated metadata key description',
-      metaDataKey: null,
+      role: 2,
+      actionType: 2,
     };
 
     const response = await app.inject({
       method: 'PATCH',
-      url: `/api/v1/metadataKey/${metadataKeyMock.id}`,
+      url: `/api/v1/availableAction/${availableActionMock.id}`,
       body: { ...dataToUpdate },
     });
 
@@ -101,16 +101,15 @@ describe('Testing endpoints for metadataKey table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof body.data).toBe('object');
     expect(typeof updatedItem).toBe('object');
-    expect(updatedItem).toHaveProperty('id', metadataKeyMock.id);
-    expect(updatedItem).toHaveProperty('key', dataToUpdate.key);
-    expect(updatedItem).toHaveProperty('description', dataToUpdate.description);
-    expect(updatedItem).toHaveProperty('metaDataKey', dataToUpdate.metaDataKey);
+    expect(updatedItem).toHaveProperty('id', availableActionMock.id);
+    expect(updatedItem).toHaveProperty('role', dataToUpdate.role);
+    expect(updatedItem).toHaveProperty('actionType', dataToUpdate.actionType);
   });
 
-  test('Should delete metadata key by id', async () => {
+  test('Should delete available action by id', async () => {
     const response = await app.inject({
       method: 'DELETE',
-      url: `/api/v1/metadataKey/${metadataKeyMock.id}`,
+      url: `/api/v1/availableAction/${availableActionMock.id}`,
     });
 
     const body = JSON.parse(response.body);
