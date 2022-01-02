@@ -1,6 +1,6 @@
 'use strict';
 
-const availableForRouter = require('./availableForRoutes');
+const metadataTypeRouter = require('./metadataTypeRoutes');
 const categoriesRouter = require('./categoriesRoutes');
 const dataSetsRouter = require('./dataSetsRoutes');
 const metadataKeyRouter = require('./metadataKeyRoutes');
@@ -15,7 +15,7 @@ const availableActionRouter = require('./availableActionRoutes');
 const grantRouter = require('./grantRoutes');
 
 module.exports = {
-  availableForRouter,
+  metadataTypeRouter,
   categoriesRouter,
   dataSetsRouter,
   metadataKeyRouter,
