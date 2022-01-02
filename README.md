@@ -1,10 +1,25 @@
-<div id="top"></div>
+<p align="center">
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/issues">
+        <img alt="GitHub issues" src="https://img.shields.io/github/issues/KhrapkoVasyl/open-data-manage-system?style=for-the-badge"></a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/network">
+        <img alt="GitHub forks" src="https://img.shields.io/github/forks/KhrapkoVasyl/open-data-manage-system?style=for-the-badge">
+    </a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/stargazers">
+        <img alt="GitHub stars" src="https://img.shields.io/github/stars/KhrapkoVasyl/open-data-manage-system?style=for-the-badge">
+    </a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/blob/master/LICENSE">
+        <img alt="GitHub license" src="https://img.shields.io/github/license/KhrapkoVasyl/open-data-manage-system?style=for-the-badge">
+    </a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system">
+        <img alt="GitHub license" src="https://img.shields.io/github/contributors/KhrapkoVasyl/open-data-manage-system.svg?style=for-the-badge">
+    </a>
 
-<br />
+</p>
+
 <div align="center">
   <h1 align="center">ODMS REST API</h1>
   <p align="center">
-    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system">Explore the docs &Rightarrow;</a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/blob/master/README.md">Explore the docs &Rightarrow;</a>
   </p>
 </div>
 
@@ -107,10 +122,10 @@ Endpoints for viewing and manipulating metadatakeys:
 
 ## License
 
-Distributed under the MIT License. See LICENSE.txt for more information.
+Distributed under the MIT License. See [LICENSE.txt](https://github.com/KhrapkoVasyl/open-data-manage-system/blob/master/LICENSE) for more information.
 
 ## Contributors
 
-Vasyl Khrapko - [@vazzz7zzzok](https://t.me/vazzz7zzzok) -
-Artem Matiushenko - [@artemko_m](https://t.me/artemko_m) - artom.matyushenko@gmail.com
-Bogdan Zinovij - [@bzinovoy](https://t.me/bzinovoy)
+- Vasyl Khrapko - [@vazzz7zzzok](https://t.me/vazzz7zzzok) -
+- Artem Matiushenko - [@artemko_m](https://t.me/artemko_m) - artom.matyushenko@gmail.com
+- Bogdan Zinovij - [@bzinovoy](https://t.me/bzinovoy)
