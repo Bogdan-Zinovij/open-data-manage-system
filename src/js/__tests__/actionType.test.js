@@ -22,7 +22,7 @@ describe('Testing endpoints for actionType table', () => {
     description: 'actiontype description',
   });
 
-  test('Create new action type', async () => {
+  test('Should create new action type', async () => {
     const response = await app.inject({
       method: 'POST',
       url: '/api/v1/actionType/',
@@ -50,7 +50,7 @@ describe('Testing endpoints for actionType table', () => {
     expect(newItem.description).toEqual(actionTypeMock.description);
   });
 
-  test('Get all action types', async () => {
+  test('Should get all action types', async () => {
     const response = await app.inject({
       method: 'GET',
       url: '/api/v1/actionType/',
@@ -68,7 +68,7 @@ describe('Testing endpoints for actionType table', () => {
     expect(Array.isArray(body.data.items)).toBe(true);
   });
 
-  test('Get action type by id', async () => {
+  test('Should get action type by id', async () => {
     const response = await app.inject({
       method: 'GET',
       url: `/api/v1/actionType/${actionTypeMock.id}`,
@@ -89,7 +89,7 @@ describe('Testing endpoints for actionType table', () => {
     expect(item).toEqual(actionTypeMock);
   });
 
-  test('Update action type by id', async () => {
+  test('Should update action type by id', async () => {
     const dataToUpdate = {
       name: 'updated name',
       description: 'updated description',
@@ -120,7 +120,7 @@ describe('Testing endpoints for actionType table', () => {
     expect(updatedItem.id).toEqual(actionTypeMock.id);
   });
 
-  test('Delete action type by id', async () => {
+  test('Should delete action type by id', async () => {
     const response = await app.inject({
       method: 'DELETE',
       url: `/api/v1/actionType/${actionTypeMock.id}`,
