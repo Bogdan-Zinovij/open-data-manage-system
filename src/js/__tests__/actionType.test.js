@@ -4,6 +4,7 @@ const app = require('../app');
 const db = require('../db/db');
 const associate = require('../db/associate');
 const ActionType = require('../db/models/ActionType');
+const { json } = require('sequelize/dist');
 
 describe('Testing endpoints for actionType table', () => {
   beforeAll(async () => {
@@ -12,16 +13,14 @@ describe('Testing endpoints for actionType table', () => {
   });
 
   afterAll(async () => {
-    //await db.sync({ force: true });
     db.close();
     app.close();
   });
 
-  const { dataValues: actionTypeMock } = ActionType.build({
+  const actionTypeMock = {
     name: 'actiontype name',
     description: 'actiontype description',
-  });
-
+  };
   test('Should create new action type', async () => {
     const response = await app.inject({
       method: 'POST',
@@ -29,11 +28,9 @@ describe('Testing endpoints for actionType table', () => {
       body: { ...actionTypeMock },
     });
 
-    const body = JSON.parse(response.body);
+    const body = response.json();
 
-    const {
-      data: { newItem },
-    } = JSON.parse(response.body);
+    const newItem = body.data.newItem;
 
     actionTypeMock.id = newItem.id;
 
@@ -56,7 +53,7 @@ describe('Testing endpoints for actionType table', () => {
       url: '/api/v1/actionType/',
     });
 
-    const body = JSON.parse(response.body);
+    const body = response.json();
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
@@ -74,7 +71,7 @@ describe('Testing endpoints for actionType table', () => {
       url: `/api/v1/actionType/${actionTypeMock.id}`,
     });
 
-    const body = JSON.parse(response.body);
+    const body = response.json();
     const {
       data: { item },
     } = body;
