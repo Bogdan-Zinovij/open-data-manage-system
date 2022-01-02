@@ -126,6 +126,6 @@ Distributed under the MIT License. See [LICENSE.txt](https://github.com/KhrapkoV
 
 ## Contributors
 
-- Vasyl Khrapko - [@vazzz7zzzok](https://t.me/vazzz7zzzok) -
+- Vasyl Khrapko - [@vazzz7zzzok](https://t.me/vazzz7zzzok) - khrapko2002@gmail.com
 - Artem Matiushenko - [@artemko_m](https://t.me/artemko_m) - artom.matyushenko@gmail.com
-- Bogdan Zinovij - [@bzinovoy](https://t.me/bzinovoy)
+- Bogdan Zinovij - [@bzinovoy](https://t.me/bzinovoy) - bogdanolexandrov@gmail.com
