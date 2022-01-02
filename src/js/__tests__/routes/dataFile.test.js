@@ -27,18 +27,18 @@ describe('Testing endpoints for dataFile table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const newFile = body.data.newFile;
-    dataFileMock.id = newFile.id;
+    const newItem = body.data.newItem;
+    dataFileMock.id = newItem.id;
 
     expect(response.statusCode).toBe(201);
     expect(typeof body).toBe('object');
     expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
-    expect(typeof newFile).toBe('object');
-    expect(newFile).toHaveProperty('id');
-    expect(newFile).toHaveProperty('dataSet', dataFileMock.dataSet);
-    expect(newFile).toHaveProperty('createdAt');
-    expect(newFile).toHaveProperty('updatedAt');
+    expect(typeof newItem).toBe('object');
+    expect(newItem).toHaveProperty('id');
+    expect(newItem).toHaveProperty('dataSet', dataFileMock.dataSet);
+    expect(newItem).toHaveProperty('createdAt');
+    expect(newItem).toHaveProperty('updatedAt');
   });
 
   test('Should get all data files', async () => {
@@ -56,7 +56,7 @@ describe('Testing endpoints for dataFile table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof body.data).toBe('object');
     expect(typeof body.results).toBe('number');
-    expect(Array.isArray(body.data.files)).toBe(true);
+    expect(Array.isArray(body.data.items)).toBe(true);
   });
 
   test('Should get all data files in data set', async () => {
@@ -74,7 +74,7 @@ describe('Testing endpoints for dataFile table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof body.data).toBe('object');
     expect(typeof body.results).toBe('number');
-    expect(Array.isArray(body.data.files)).toBe(true);
+    expect(Array.isArray(body.data.items)).toBe(true);
   });
 
   test('Should get data file in data set by id', async () => {
@@ -84,16 +84,16 @@ describe('Testing endpoints for dataFile table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const file = body.data.file;
+    const item = body.data.item;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
     expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
     expect(typeof body.data).toBe('object');
-    expect(typeof file).toBe('object');
-    expect(file.id).toBe(dataFileMock.id);
-    expect(file.dataSet).toBe(dataFileMock.dataSet);
+    expect(typeof item).toBe('object');
+    expect(item.id).toBe(dataFileMock.id);
+    expect(item.dataSet).toBe(dataFileMock.dataSet);
   });
 
   test('Should update data file by id', async () => {
@@ -108,17 +108,17 @@ describe('Testing endpoints for dataFile table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const updatedFile = body.data.updatedFile;
+    const updatedItem = body.data.updatedItem;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
     expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
-    expect(typeof updatedFile).toBe('object');
-    expect(updatedFile).toHaveProperty('id', dataFileMock.id);
-    expect(updatedFile).toHaveProperty('dataSet', dataToUpdate.dataSet);
-    expect(updatedFile).toHaveProperty('createdAt');
-    expect(updatedFile).toHaveProperty('updatedAt');
+    expect(typeof updatedItem).toBe('object');
+    expect(updatedItem).toHaveProperty('id', dataFileMock.id);
+    expect(updatedItem).toHaveProperty('dataSet', dataToUpdate.dataSet);
+    expect(updatedItem).toHaveProperty('createdAt');
+    expect(updatedItem).toHaveProperty('updatedAt');
   });
 
   test('Should delete data file by id', async () => {
