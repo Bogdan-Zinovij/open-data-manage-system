@@ -4,13 +4,13 @@ const DataFile = require('../db/models/DataFile');
 
 exports.getAllDataFiles = async (req, reply) => {
   try {
-    const files = await DataFile.findAll();
+    const items = await DataFile.findAll();
 
     reply.status(200).send({
       status: 'success',
-      results: files.length,
+      results: items.length,
       data: {
-        files,
+        items,
       },
     });
   } catch (err) {
@@ -23,7 +23,7 @@ exports.getAllDataFiles = async (req, reply) => {
 
 exports.getAllDataFilesInDataSet = async (req, reply) => {
   try {
-    const files = await DataFile.findAll({
+    const items = await DataFile.findAll({
       where: {
         dataSet: req.params.id,
       },
@@ -31,9 +31,9 @@ exports.getAllDataFilesInDataSet = async (req, reply) => {
 
     reply.status(200).send({
       status: 'success',
-      results: files.length,
+      results: items.length,
       data: {
-        files,
+        items,
       },
     });
   } catch (err) {
@@ -46,14 +46,14 @@ exports.getAllDataFilesInDataSet = async (req, reply) => {
 
 exports.getDataFile = async (req, reply) => {
   try {
-    const file = await DataFile.findOne({
+    const item = await DataFile.findOne({
       where: {
         id: req.params.fileId,
         dataSet: req.params.id,
       },
     });
 
-    if (!file) {
+    if (!item) {
       throw new Error(
         'Datafile with the specified ID was not found in this Dataset'
       );
@@ -62,7 +62,7 @@ exports.getDataFile = async (req, reply) => {
     reply.status(200).send({
       status: 'success',
       data: {
-        file,
+        item,
       },
     });
   } catch (err) {
@@ -75,13 +75,13 @@ exports.getDataFile = async (req, reply) => {
 
 exports.createDataFile = async (req, reply) => {
   try {
-    const dataSetId = +req.params.id;
-    const newFile = await DataFile.create({ dataSet: dataSetId });
+    const dataSet = +req.params.id;
+    const newFile = await DataFile.create({ dataSet });
 
     reply.status(201).send({
       status: 'success',
       data: {
-        newFile,
+        newItem: newFile,
       },
     });
   } catch (err) {
@@ -95,23 +95,32 @@ exports.createDataFile = async (req, reply) => {
 exports.updateDataFile = async (req, reply) => {
   try {
     const { id, fileId } = req.params;
-    const [updated] = await DataFile.update(req.body, {
+    const file = await DataFile.findOne({
       where: { id: +fileId, dataSet: +id },
     });
+    let updatedItem;
 
-    const updatedFile = await DataFile.findOne({
-      where: { id: fileId },
-    });
-
-    if (!updated)
+    if (!file)
       throw new Error(
         'Datafile with the specified ID was not found in this Dataset'
       );
 
+    const [isUpdated] = await DataFile.update(req.body, {
+      where: { id: +fileId, dataSet: +id },
+    });
+
+    if (isUpdated) {
+      updatedItem = await DataFile.findOne({
+        where: { id: fileId },
+      });
+    } else {
+      updatedItem = file;
+    }
+
     reply.status(200).send({
       status: 'success',
       data: {
-        updatedFile,
+        updatedItem,
       },
     });
   } catch (err) {
