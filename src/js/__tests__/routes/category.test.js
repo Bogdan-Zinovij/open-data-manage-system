@@ -3,7 +3,6 @@
 const app = require('../../app');
 const db = require('../../db/db');
 const associate = require('../../db/associate');
-const Category = require('../../db/models/Category');
 
 describe('Testing endpoints for category table', () => {
   beforeAll(async () => {

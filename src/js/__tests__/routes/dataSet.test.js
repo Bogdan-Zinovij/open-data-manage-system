@@ -74,8 +74,8 @@ describe('Testing endpoints for dataSet table', () => {
     expect(body).toHaveProperty('data');
     expect(typeof body.data).toBe('object');
     expect(typeof item).toBe('object');
-    expect(item.id).toBe(dataSetMock.id);
-    expect(item.category).toBe(dataSetMock.category);
+    expect(item).toHaveProperty('id', dataSetMock.id);
+    expect(item).toBe('category', dataSetMock.category);
   });
 
   test('Should update data set by id', async () => {
