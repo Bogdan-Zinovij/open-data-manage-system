@@ -95,7 +95,6 @@ describe('Testing endpoints for grant table', () => {
     });
 
     const body = JSON.parse(response.body);
-    console.log(body);
     const updatedItem = body.data.updatedItem;
 
     expect(response.statusCode).toBe(200);
