@@ -1,69 +1,131 @@
+<p align="center">
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/issues">
+        <img alt="GitHub issues" src="https://img.shields.io/github/issues/KhrapkoVasyl/open-data-manage-system?style=for-the-badge"></a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/network">
+        <img alt="GitHub forks" src="https://img.shields.io/github/forks/KhrapkoVasyl/open-data-manage-system?style=for-the-badge">
+    </a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/stargazers">
+        <img alt="GitHub stars" src="https://img.shields.io/github/stars/KhrapkoVasyl/open-data-manage-system?style=for-the-badge">
+    </a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/blob/master/LICENSE">
+        <img alt="GitHub license" src="https://img.shields.io/github/license/KhrapkoVasyl/open-data-manage-system?style=for-the-badge">
+    </a>
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system">
+        <img alt="GitHub license" src="https://img.shields.io/github/contributors/KhrapkoVasyl/open-data-manage-system.svg?style=for-the-badge">
+    </a>
 
-# Шаблон репозиторію для виконання курсової роботи з дисципліни "Бази даних"
+</p>
 
-## Як використовувати
+<div align="center">
+  <h1 align="center">ODMS REST API</h1>
+  <p align="center">
+    <a href="https://github.com/KhrapkoVasyl/open-data-manage-system/blob/master/README.md">Explore the docs &Rightarrow;</a>
+  </p>
+</div>
 
-B цьому репозиторії знаходиться шаблон для виконання курсової роботи.
+## About the project
 
-Для виконання курсової роботи необхідно зробити ```fork``` цього репозіторію, склонувати вже власний репозіторій та розміщувати документацію у відповідних діректоріях ```./docs```.
+OMDS REST API - it's Node.js application which is created to model a communication with a simple web server and open data management system's database prototype and to perfom basic CRUD operations.
 
-В цьому файлі необхідно вказати назву проекту. Коротку загальну характеристику
-проекту, контактні дані виконавця, посилання на репо співвиконавців(за необхідністю).
+### Built with
 
+- Runtime environment: [Node.js](https://nodejs.org/)
+- Web framework: [Fastify](https://www.fastify.io/)
+- ORM: [Sequelize](https://sequelize.org/)
+- Database: [MySQL](https://www.mysql.com/)
+- Testing framework: [JEST](https://jestjs.io/)
 
-Шаблон публікування курсової роботи підготовлено з використанням [VuePress](https://vuepress.vuejs.org/), та стартера 
-[FriendlyUser/vuepress-theme-cool-starter](https://github.com/FriendlyUser/vuepress-theme-cool-starter).
+## Installation
 
-Щоб опублікувати проект у Github Pages, налаштовуємо Github Pages (гілка ```gh-pages```), змінюємо файл ```./publish.sh```
+1. Clone the repo:
+   ```sh
+   git clone https://github.com/KhrapkoVasyl/open-data-manage-system.git
+   ```
+2. Open `src/js` directory and install NPM packages:
+   ```sh
+   npm install
+   ```
+3. Got to `src/js` directory.
 
-```sh
+4. Create a local instance of the database by executing `Model.sql` SQL script which is in `src/sql` directory.
 
-#!/usr/bin/env sh
+5. Create `.env` file and fill it with your own configuration data as follows:
 
-# abort on errors
-set -e
+   ```sh
+   MYSQL_HOST=MYSQL_HOST
+   MYSQL_PORT=MYSQL_PORT
+   MYSQL_USER=MYSQL_USER
+   MYSQL_PASS=MYSQL_PASS
+   MYSQL_DB=omds
+   FASTIFY_PORT=FASTIFY_PORT
 
-# build
-npm run docs:build
+   ```
 
-# navigate into the build output directory
-cd docs/.vuepress/dist
+6. Start the application:
 
-# if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
+   ```sh
+   npm start
+   ```
 
-git init
-git add -A
-git commit -m 'deploy'
+7. Run the tests:
+   ```sh
+   npm test
+   ```
 
-# if you are deploying to https://<USERNAME>.github.io
-# git push -f git@github.com:boldak/<USERNAME>.github.io.git master
+## Usage
 
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f https://github.com/<USERNAME>/dis-edu.git master:gh-pages
+All of the requests should be executed on `http://localhost:FASTIFY_PORT/`
 
-cd -
+### Open endpoints
 
-```
+Open endpoints require no Authentication.
 
-Потім запускаємо
+#### Dataset related
 
-```bash
-    npm run publish
-```
+Endpoints for viewing and manipulating datasets:
 
-Для відлагодження документації в локальному режимі запускаємо
+- Create new dataset: `POST /api/v1/dataset/`
+- Get all available datasets: `GET /api/v1/dataset/`
+- Get dataset by id: `GET /api/v1/dataset/:id/`
+- Update dataset by id: `GET /api/v1/dataset/:id/`
+- Delete dataset by id: `DELETE /api/v1/dataset/:id/`
 
-```bash
-    npm run docs:dev
-```
+#### Category related
 
-Доступ до локально опублікованої версії [http://localhost:3030](http://localhost:3030)
+Endpoints for viewing and manipulating categories:
 
+- Create new category: `POST /api/v1/category/`
+- Get all available categories: `GET /api/v1/category/`
+- Get category by id: `GET /api/v1/category/:id/`
+- Update category by id: `GET /api/v1/category/:id/`
+- Delete category by id: `DELETE /api/v1/category/:id/`
 
-## Додаткова інформація
+#### Datafile related
 
-- [Теми проєктів](./guidelines/themes.md)
-- [Методичні вказівки](./guidelines/guidelines.md)
+Endpoints for viewing and manipulating datafiles:
 
-***Happy learning! Happy coding!*** 
+- Create new datafile: `POST /api/v1/datafile/`
+- Get all available datafiles: `GET /api/v1/datafile/`
+- Get datafile by id: `GET /api/v1/datafile/:id/`
+- Update datafile by id: `GET /api/v1/datafile/:id/`
+- Delete datafile by id: `DELETE /api/v1/datafile/:id/`
+
+#### MetadataKey related
+
+Endpoints for viewing and manipulating metadatakeys:
+
+- Create new metadatakey: `POST /api/v1/metadatakey/`
+- Get all available metadatakeys: `GET /api/v1/metadatakey/`
+- Get metadatakey by id: `GET /api/v1/metadatakey/:id/`
+- Update metadatakey by id: `GET /api/v1/metadatakey/:id/`
+- Delete metadatakey by id: `DELETE /api/v1/metadatakey/:id/`
+
+## License
+
+Distributed under the MIT License. See [LICENSE.txt](https://github.com/KhrapkoVasyl/open-data-manage-system/blob/master/LICENSE) for more information.
+
+## Contributors
+
+- Vasyl Khrapko - [@vazzz7zzzok](https://t.me/vazzz7zzzok) - khrapko2002@gmail.com
+- Artem Matiushenko - [@artemko_m](https://t.me/artemko_m) - artom.matyushenko@gmail.com
+- Bogdan Zinovij - [@bzinovoy](https://t.me/bzinovoy) - bogdanolexandrov@gmail.com
