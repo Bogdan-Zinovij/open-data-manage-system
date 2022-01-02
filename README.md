@@ -104,3 +104,13 @@ Endpoints for viewing and manipulating metadatakeys:
 - Get metadatakey by id: `GET /api/v1/metadatakey/:id/`
 - Update metadatakey by id: `GET /api/v1/metadatakey/:id/`
 - Delete metadatakey by id: `DELETE /api/v1/metadatakey/:id/`
+
+## License
+
+Distributed under the MIT License. See LICENSE.txt for more information.
+
+## Contributors
+
+Vasyl Khrapko - [@vazzz7zzzok](https://t.me/vazzz7zzzok) -
+Artem Matiushenko - [@artemko_m](https://t.me/artemko_m) - artom.matyushenko@gmail.com
+Bogdan Zinovij - [@bzinovoy](https://t.me/bzinovoy)
