@@ -1,6 +1,6 @@
 'use strict';
 
-const AvailableFor = require('../db/models/MetaDataType');
+const Action = require('../db/models/Action');
 const RoutesController = require('../utils/routesController');
-const AvailableForController = new RoutesController(AvailableFor);
-module.exports = AvailableForController;
+const actionController = new RoutesController(Action);
+module.exports = actionController;
