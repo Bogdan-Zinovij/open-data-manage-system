@@ -3,7 +3,7 @@
 const DataTypes = require('sequelize');
 const db = require('../db');
 
-const AvailableFor = db.define(
+const MetaDataType = db.define(
   'availableFor',
   {
     id: {
@@ -28,4 +28,4 @@ const AvailableFor = db.define(
   }
 );
 
-module.exports = AvailableFor;
+module.exports = MetaDataType;

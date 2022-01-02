@@ -104,11 +104,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `omds`.`AvailableFor`
+-- Table `omds`.`MetaDataType`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `omds`.`AvailableFor` ;
+DROP TABLE IF EXISTS `omds`.`MetaDataType` ;
 
-CREATE TABLE IF NOT EXISTS `omds`.`AvailableFor` (
+CREATE TABLE IF NOT EXISTS `omds`.`MetaDataType` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `type` INT NOT NULL,
   `metaDataKey` INT NOT NULL,
@@ -407,27 +407,27 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `omds`.`AvailableFor`
+-- Data for table `omds`.`MetaDataType`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `omds`;
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (1, 1, 1);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (2, 2, 1);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (3, 3, 1);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (4, 2, 2);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (5, 2, 3);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (6, 3, 3);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (7, 2, 4);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (8, 3, 4);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (9, 2, 5);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (10, 3, 5);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (11, 2, 6);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (12, 3, 6);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (13, 2, 7);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (14, 2, 8);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (15, 1, 9);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (16, 2, 9);
-INSERT INTO `omds`.`AvailableFor` (`id`, `type`, `metaDataKey`) VALUES (17, 3, 9);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (1, 1, 1);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (2, 2, 1);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (3, 3, 1);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (4, 2, 2);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (5, 2, 3);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (6, 3, 3);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (7, 2, 4);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (8, 3, 4);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (9, 2, 5);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (10, 3, 5);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (11, 2, 6);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (12, 3, 6);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (13, 2, 7);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (14, 2, 8);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (15, 1, 9);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (16, 2, 9);
+INSERT INTO `omds`.`MetaDataType` (`id`, `type`, `metaDataKey`) VALUES (17, 3, 9);
 
 COMMIT;
 
