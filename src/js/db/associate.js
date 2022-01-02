@@ -3,7 +3,7 @@
 const Action = require('./models/Action');
 const ActionType = require('./models/ActionType');
 const AvailableAction = require('./models/AvailableAction');
-const AvailableFor = require('./models/AvailableFor');
+const MetaDataType = require('./models/MetaDataType');
 const Category = require('./models/Category');
 const DataFile = require('./models/DataFile');
 const DataSet = require('./models/DataSet');
@@ -38,18 +38,18 @@ const associate = () => {
     targetKey: 'id',
   });
 
-  Type.hasMany(AvailableFor, {
+  Type.hasMany(MetaDataType, {
     foreignKey: 'type',
     sourceKey: 'id',
   });
 
-  AvailableFor.belongsTo(Type, {
+  MetaDataType.belongsTo(Type, {
     foreignKey: 'type',
     as: 'Type',
     targetKey: 'id',
   });
 
-  MetaDataKey.hasMany(AvailableFor, {
+  MetaDataKey.hasMany(MetaDataType, {
     foreignKey: 'metaDataKey',
     sourceKey: 'id',
   });

@@ -75,8 +75,8 @@ exports.getDataFile = async (req, reply) => {
 
 exports.createDataFile = async (req, reply) => {
   try {
-    const dataSet = +req.params.id;
-    const newFile = await DataFile.create({ dataSet });
+    const dataSetId = +req.params.id;
+    const newFile = await DataFile.create({ dataSet: dataSetId });
 
     reply.status(201).send({
       status: 'success',
