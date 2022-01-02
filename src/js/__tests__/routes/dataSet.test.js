@@ -27,7 +27,6 @@ describe('Testing endpoints for dataSet table', () => {
     });
 
     const body = JSON.parse(response.body);
-    console.log(response.body);
     const newItem = body.data.newItem;
     dataSetMock.id = newItem.id;
 
