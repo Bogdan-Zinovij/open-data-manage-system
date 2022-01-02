@@ -1,8 +1,8 @@
 'use strict';
 
-const app = require('../app');
-const db = require('../db/db');
-const associate = require('../db/associate');
+const app = require('../../app');
+const db = require('../../db/db');
+const associate = require('../../db/associate');
 
 describe('Testing endpoints for state table', () => {
   beforeAll(async () => {
@@ -33,8 +33,7 @@ describe('Testing endpoints for state table', () => {
 
     expect(response.statusCode).toBe(201);
     expect(typeof body).toBe('object');
-    expect(body).toHaveProperty('status');
-    expect(body.status).toEqual('success');
+    expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
     expect(typeof newItem).toBe('object');
     expect(newItem).toHaveProperty('id');
@@ -47,7 +46,7 @@ describe('Testing endpoints for state table', () => {
       url: '/api/v1/state/',
     });
 
-    const body = response.json();
+    const body = JSON.parse(response.body);
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
@@ -65,16 +64,15 @@ describe('Testing endpoints for state table', () => {
       url: `/api/v1/state/${stateMock.id}`,
     });
 
-    const body = response.json();
+    const body = JSON.parse(response.body);
     const {
       data: { item },
     } = body;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
-    expect(body).toHaveProperty('status');
+    expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
-    expect(body.status).toEqual('success');
     expect(typeof body.data).toBe('object');
     expect(typeof item).toBe('object');
     expect(item).toEqual(stateMock);
@@ -98,8 +96,7 @@ describe('Testing endpoints for state table', () => {
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
-    expect(body).toHaveProperty('status');
-    expect(body.status).toEqual('success');
+    expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
     expect(typeof updatedItem).toBe('object');
     expect(updatedItem).toHaveProperty('id', stateMock.id);
@@ -116,9 +113,8 @@ describe('Testing endpoints for state table', () => {
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
-    expect(body).toHaveProperty('status');
+    expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
-    expect(body.status).toEqual('success');
     expect(body.data).toEqual(null);
   });
 });
