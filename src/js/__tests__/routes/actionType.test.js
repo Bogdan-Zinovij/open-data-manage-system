@@ -1,10 +1,8 @@
 'use strict';
 
-const app = require('../app');
-const db = require('../db/db');
-const associate = require('../db/associate');
-const ActionType = require('../db/models/ActionType');
-const { json } = require('sequelize/dist');
+const app = require('../../app');
+const db = require('../../db/db');
+const associate = require('../../db/associate');
 
 describe('Testing endpoints for actionType table', () => {
   beforeAll(async () => {
@@ -21,6 +19,7 @@ describe('Testing endpoints for actionType table', () => {
     name: 'actiontype name',
     description: 'actiontype description',
   };
+
   test('Should create new action type', async () => {
     const response = await app.inject({
       method: 'POST',
@@ -28,23 +27,18 @@ describe('Testing endpoints for actionType table', () => {
       body: { ...actionTypeMock },
     });
 
-    const body = response.json();
-
+    const body = JSON.parse(response.body);
     const newItem = body.data.newItem;
-
     actionTypeMock.id = newItem.id;
 
     expect(response.statusCode).toBe(201);
     expect(typeof body).toBe('object');
-    expect(body).toHaveProperty('status');
-    expect(body.status).toEqual('success');
+    expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
     expect(typeof newItem).toBe('object');
     expect(newItem).toHaveProperty('id');
-    expect(newItem).toHaveProperty('name');
-    expect(newItem).toHaveProperty('description');
-    expect(newItem.name).toEqual(actionTypeMock.name);
-    expect(newItem.description).toEqual(actionTypeMock.description);
+    expect(newItem).toHaveProperty('name', actionTypeMock.name);
+    expect(newItem).toHaveProperty('description', actionTypeMock.description);
   });
 
   test('Should get all action types', async () => {
@@ -53,7 +47,7 @@ describe('Testing endpoints for actionType table', () => {
       url: '/api/v1/actionType/',
     });
 
-    const body = response.json();
+    const body = JSON.parse(response.body);
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
@@ -71,16 +65,13 @@ describe('Testing endpoints for actionType table', () => {
       url: `/api/v1/actionType/${actionTypeMock.id}`,
     });
 
-    const body = response.json();
-    const {
-      data: { item },
-    } = body;
+    const body = JSON.parse(response.body);
+    const item = body.data.item;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
-    expect(body).toHaveProperty('status');
+    expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
-    expect(body.status).toEqual('success');
     expect(typeof body.data).toBe('object');
     expect(typeof item).toBe('object');
     expect(item).toEqual(actionTypeMock);
@@ -99,22 +90,16 @@ describe('Testing endpoints for actionType table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const {
-      data: { updatedItem },
-    } = body;
+    const updatedItem = body.data.updatedItem;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
-    expect(body).toHaveProperty('status');
-    expect(body.status).toEqual('success');
+    expect(body).toHaveProperty('status', 'success');
     expect(body).toHaveProperty('data');
     expect(typeof updatedItem).toBe('object');
-    expect(updatedItem).toHaveProperty('id');
-    expect(updatedItem).toHaveProperty('name');
-    expect(updatedItem).toHaveProperty('description');
-    expect(updatedItem.name).toEqual(dataToUpdate.name);
-    expect(updatedItem.description).toEqual(dataToUpdate.description);
-    expect(updatedItem.id).toEqual(actionTypeMock.id);
+    expect(updatedItem).toHaveProperty('id', actionTypeMock.id);
+    expect(updatedItem).toHaveProperty('name', dataToUpdate.name);
+    expect(updatedItem).toHaveProperty('description', dataToUpdate.description);
   });
 
   test('Should delete action type by id', async () => {
@@ -127,9 +112,7 @@ describe('Testing endpoints for actionType table', () => {
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
-    expect(body).toHaveProperty('status');
-    expect(body).toHaveProperty('data');
-    expect(body.status).toEqual('success');
-    expect(body.data).toEqual(null);
+    expect(body).toHaveProperty('status', 'success');
+    expect(body).toHaveProperty('data', null);
   });
 });
