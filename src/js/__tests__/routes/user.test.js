@@ -19,6 +19,7 @@ describe('Testing endpoints for user table', () => {
     name: 'Mike',
     password: 'Marcus2000',
   };
+
   test('Should create new user', async () => {
     const response = await app.inject({
       method: 'POST',
@@ -27,9 +28,7 @@ describe('Testing endpoints for user table', () => {
     });
 
     const body = JSON.parse(response.body);
-
     const newItem = body.data.newItem;
-
     userMock.id = newItem.id;
 
     expect(response.statusCode).toBe(201);
@@ -67,9 +66,7 @@ describe('Testing endpoints for user table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const {
-      data: { item },
-    } = body;
+    const item = body.data.item;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
@@ -93,9 +90,7 @@ describe('Testing endpoints for user table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const {
-      data: { updatedItem },
-    } = body;
+    const updatedItem = body.data.updatedItem;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');

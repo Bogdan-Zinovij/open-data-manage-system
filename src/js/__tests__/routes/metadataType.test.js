@@ -27,9 +27,7 @@ describe('Testing endpoints for metadataType table', () => {
     });
 
     const body = JSON.parse(response.body);
-
     const newItem = body.data.newItem;
-
     metadataTypeMock.id = newItem.id;
 
     expect(response.statusCode).toBe(201);
@@ -67,9 +65,7 @@ describe('Testing endpoints for metadataType table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const {
-      data: { item },
-    } = body;
+    const item = body.data.item;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
@@ -92,9 +88,7 @@ describe('Testing endpoints for metadataType table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const {
-      data: { updatedItem },
-    } = body;
+    const updatedItem = body.data.updatedItem;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
