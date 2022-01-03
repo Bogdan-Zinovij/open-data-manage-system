@@ -20,9 +20,7 @@ categoryController.getAllDataSetsInCategory = async (req, reply) => {
 
     reply.status(200).send({
       status: 'success',
-      data: {
-        category,
-      },
+      data: { category },
     });
   } catch (err) {
     reply.status(404).send({

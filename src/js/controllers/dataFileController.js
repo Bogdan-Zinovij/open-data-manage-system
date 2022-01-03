@@ -9,9 +9,7 @@ exports.getAllDataFiles = async (req, reply) => {
     reply.status(200).send({
       status: 'success',
       results: items.length,
-      data: {
-        items,
-      },
+      data: { items },
     });
   } catch (err) {
     reply.status(404).send({
@@ -24,17 +22,13 @@ exports.getAllDataFiles = async (req, reply) => {
 exports.getAllDataFilesInDataSet = async (req, reply) => {
   try {
     const items = await DataFile.findAll({
-      where: {
-        dataSet: req.params.id,
-      },
+      where: { dataSet: req.params.id },
     });
 
     reply.status(200).send({
       status: 'success',
       results: items.length,
-      data: {
-        items,
-      },
+      data: { items },
     });
   } catch (err) {
     reply.status(404).send({
@@ -61,9 +55,7 @@ exports.getDataFile = async (req, reply) => {
 
     reply.status(200).send({
       status: 'success',
-      data: {
-        item,
-      },
+      data: { item },
     });
   } catch (err) {
     reply.status(404).send({
@@ -80,9 +72,7 @@ exports.createDataFile = async (req, reply) => {
 
     reply.status(201).send({
       status: 'success',
-      data: {
-        newItem: newFile,
-      },
+      data: { newItem: newFile },
     });
   } catch (err) {
     reply.status(400).send({
@@ -119,9 +109,7 @@ exports.updateDataFile = async (req, reply) => {
 
     reply.status(200).send({
       status: 'success',
-      data: {
-        updatedItem,
-      },
+      data: { updatedItem },
     });
   } catch (err) {
     reply.status(404).send({

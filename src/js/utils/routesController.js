@@ -4,9 +4,15 @@ module.exports = class RoutesController {
   constructor(model) {
     this.model = model;
     this.modelName = this.model.name;
+
+    this.getAllItems = this.getAllItems.bind(this);
+    this.getItemById = this.getItemById.bind(this);
+    this.createNewItem = this.createNewItem.bind(this);
+    this.updateItemById = this.updateItemById.bind(this);
+    this.deleteItemById = this.deleteItemById.bind(this);
   }
 
-  getAllItems = async (req, reply) => {
+  async getAllItems(req, reply) {
     try {
       const items = await this.model.findAll({ order: ['id'] });
       reply.status(200).send({
@@ -20,9 +26,9 @@ module.exports = class RoutesController {
         message: err.message,
       });
     }
-  };
+  }
 
-  getItemById = async (req, reply) => {
+  async getItemById(req, reply) {
     try {
       const { id } = req.params;
       const item = await this.model.findOne({ where: { id } });
@@ -42,9 +48,9 @@ module.exports = class RoutesController {
         message: err.message,
       });
     }
-  };
+  }
 
-  createNewItem = async (req, reply) => {
+  async createNewItem(req, reply) {
     try {
       const newItem = await this.model.create(req.body);
       reply.status(201).send({
@@ -57,9 +63,9 @@ module.exports = class RoutesController {
         message: err.message,
       });
     }
-  };
+  }
 
-  updateItemById = async (req, reply) => {
+  async updateItemById(req, reply) {
     try {
       const { id } = req.params;
       const item = await this.model.findOne({ where: { id } });
@@ -88,9 +94,9 @@ module.exports = class RoutesController {
         message: err.message,
       });
     }
-  };
+  }
 
-  deleteItemById = async (req, reply) => {
+  async deleteItemById(req, reply) {
     try {
       const { id } = req.params;
       const item = await this.model.findOne({ where: { id } });
@@ -112,5 +118,5 @@ module.exports = class RoutesController {
         message: err.message,
       });
     }
-  };
+  }
 };
