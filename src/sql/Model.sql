@@ -466,6 +466,7 @@ COMMIT;
 START TRANSACTION;
 USE `omds`;
 INSERT INTO `omds`.`DataSet` (`id`, `updatedAt`, `createdAt`, `category`) VALUES (1, '2021-11-01', '2021-10-01', 2);
+INSERT INTO `omds`.`DataSet` (`id`, `updatedAt`, `createdAt`, `category`) VALUES (2, '2021-11-05', '2021-11-05', 3);
 
 COMMIT;
 
