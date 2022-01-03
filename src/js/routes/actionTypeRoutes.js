@@ -1,16 +1,8 @@
 'use strict';
 
 const actionTypeController = require('../controllers/actionTypeController');
+const createRoutersFunction = require('../utils/createRoutersFunction');
 
-const setActionTypeRoutes = (fastify, options, done) => {
-  fastify
-    .get('/', actionTypeController.getAllItems)
-    .post('/', actionTypeController.createNewItem)
-    .get('/:id', actionTypeController.getItemById)
-    .delete('/:id', actionTypeController.deleteItemById)
-    .patch('/:id', actionTypeController.updateItemById);
-
-  done();
-};
+const setActionTypeRoutes = createRoutersFunction(actionTypeController);
 
 module.exports = setActionTypeRoutes;

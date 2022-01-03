@@ -1,8 +1,8 @@
 'use strict';
 
 const actionController = require('../controllers/actionController');
-const setBasicRoutes = require('../utils/setBasicRoutes');
+const createRoutersFunction = require('../utils/createRoutersFunction');
 
-const setActionRoutes = setBasicRoutes(actionController);
+const setActionRoutes = createRoutersFunction(actionController);
 
 module.exports = setActionRoutes;

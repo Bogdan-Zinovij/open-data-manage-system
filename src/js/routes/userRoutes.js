@@ -1,8 +1,8 @@
 'use strict';
 
 const userController = require('../controllers/userController');
-const setBasicRoutes = require('../utils/setBasicRoutes');
+const createRoutersFunction = require('../utils/createRoutersFunction');
 
-const setUserRoutes = setBasicRoutes(userController);
+const setUserRoutes = createRoutersFunction(userController);
 
 module.exports = setUserRoutes;

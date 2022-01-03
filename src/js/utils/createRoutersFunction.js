@@ -1,6 +1,6 @@
 'use strict';
 
-const setBasicRoutes = controller => (fastify, options, done) => {
+const createRoutersFunction = controller => (fastify, options, done) => {
   fastify
     .get('/', controller.getAllItems)
     .post('/', controller.createNewItem)
@@ -12,4 +12,4 @@ const setBasicRoutes = controller => (fastify, options, done) => {
   done();
 };
 
-module.exports = setBasicRoutes;
+module.exports = createRoutersFunction;
