@@ -1,17 +1,8 @@
 'use strict';
 
 const stateController = require('../controllers/stateController');
+const setBasicRoutes = require('../utils/setBasicRoutes');
 
-const setStateRoutes = (fastify, options, done) => {
-  fastify
-    .get('/', stateController.getAllItems)
-    .post('/', stateController.createNewItem)
-
-    .get('/:id', stateController.getItemById)
-    .delete('/:id', stateController.deleteItemById)
-    .patch('/:id', stateController.updateItemById);
-
-  done();
-};
+const setStateRoutes = setBasicRoutes(stateController);
 
 module.exports = setStateRoutes;
