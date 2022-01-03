@@ -93,7 +93,7 @@ describe('Testing endpoints for dataFile table', () => {
     expect(typeof body.data).toBe('object');
     expect(typeof item).toBe('object');
     expect(item).toHaveProperty('id', dataFileMock.id);
-    expect(item).toHaveProperty('id', dataFileMock.dataSet);
+    expect(item).toHaveProperty('dataSet', dataFileMock.dataSet);
   });
 
   test('Should update data file by id', async () => {
