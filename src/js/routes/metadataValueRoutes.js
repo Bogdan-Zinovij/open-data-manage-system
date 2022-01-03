@@ -1,8 +1,8 @@
 'use strict';
 
 const dataValueController = require('../controllers/metadataValueController');
-const setBasicRoutes = require('../utils/setBasicRoutes');
+const createRoutersFunction = require('../utils/createRoutersFunction');
 
-const setDataValuesRoutes = setBasicRoutes(dataValueController);
+const setDataValuesRoutes = createRoutersFunction(dataValueController);
 
 module.exports = setDataValuesRoutes;

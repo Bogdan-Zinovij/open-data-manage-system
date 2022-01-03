@@ -2,16 +2,10 @@
 
 // eslint-disable-next-line max-len
 const availableActionController = require('../controllers/availableActionController');
+const createRoutersFunction = require('../utils/createRoutersFunction');
 
-const setAvailableActionRoutes = (fastify, options, done) => {
-  fastify
-    .get('/', availableActionController.getAllItems)
-    .post('/', availableActionController.createNewItem)
-    .get('/:id', availableActionController.getItemById)
-    .delete('/:id', availableActionController.deleteItemById)
-    .patch('/:id', availableActionController.updateItemById);
-
-  done();
-};
+const setAvailableActionRoutes = createRoutersFunction(
+  availableActionController
+);
 
 module.exports = setAvailableActionRoutes;

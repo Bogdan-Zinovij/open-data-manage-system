@@ -1,8 +1,8 @@
 'use strict';
 
 const typeController = require('../controllers/typeController');
-const setBasicRoutes = require('../utils/setBasicRoutes');
+const createRoutersFunction = require('../utils/createRoutersFunction');
 
-const setTypeRoutes = setBasicRoutes(typeController);
+const setTypeRoutes = createRoutersFunction(typeController);
 
 module.exports = setTypeRoutes;

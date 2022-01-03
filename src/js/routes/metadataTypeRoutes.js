@@ -1,8 +1,8 @@
 'use strict';
 
 const metadataTypeController = require('../controllers/metadataTypeController');
-const setBasicRoutes = require('../utils/setBasicRoutes');
+const createRoutersFunction = require('../utils/createRoutersFunction');
 
-const setMetadataTypeRoutes = setBasicRoutes(metadataTypeController);
+const setMetadataTypeRoutes = createRoutersFunction(metadataTypeController);
 
 module.exports = setMetadataTypeRoutes;

@@ -1,16 +1,8 @@
 'use strict';
 
 const grantController = require('../controllers/grantController');
+const createRoutersFunction = require('../utils/createRoutersFunction');
 
-const setGrantRoutes = (fastify, options, done) => {
-  fastify
-    .get('/', grantController.getAllItems)
-    .post('/', grantController.createNewItem)
-    .get('/:id', grantController.getItemById)
-    .delete('/:id', grantController.deleteItemById)
-    .patch('/:id', grantController.updateItemById);
-
-  done();
-};
+const setGrantRoutes = createRoutersFunction(grantController);
 
 module.exports = setGrantRoutes;
