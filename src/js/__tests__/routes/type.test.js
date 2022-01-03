@@ -18,6 +18,7 @@ describe('Testing endpoints for type table', () => {
   const typeMock = {
     text: 'String',
   };
+
   test('Should create new type', async () => {
     const response = await app.inject({
       method: 'POST',
@@ -26,9 +27,7 @@ describe('Testing endpoints for type table', () => {
     });
 
     const body = JSON.parse(response.body);
-
     const newItem = body.data.newItem;
-
     typeMock.id = newItem.id;
 
     expect(response.statusCode).toBe(201);
@@ -65,9 +64,7 @@ describe('Testing endpoints for type table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const {
-      data: { item },
-    } = body;
+    const item = body.data.item;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');
@@ -90,9 +87,7 @@ describe('Testing endpoints for type table', () => {
     });
 
     const body = JSON.parse(response.body);
-    const {
-      data: { updatedItem },
-    } = body;
+    const updatedItem = body.data.updatedItem;
 
     expect(response.statusCode).toBe(200);
     expect(typeof body).toBe('object');

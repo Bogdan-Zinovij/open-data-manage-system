@@ -2,9 +2,7 @@
 
 const { ROUTER_WORD_LENGTH } = require('../config');
 
-const registerRouters = (fastify, routers, prefix = '') => {
-  if (prefix[prefix.length - 1] !== '/') prefix += '/';
-
+const registerRouters = (fastify, routers, prefix = '/') => {
   const routersArr = Object.keys(routers);
 
   for (const router of routersArr) {
