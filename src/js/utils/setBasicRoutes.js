@@ -1,7 +1,15 @@
 'use strict';
 
 const setBasicRoutes = controller => (fastify, options, done) => {
-  //TODO write this function to set basic routes to remove duplicate code
+  fastify
+    .get('/', controller.getAllItems)
+    .post('/', controller.createNewItem)
+
+    .get('/:id', controller.getItemById)
+    .delete('/:id', controller.deleteItemById)
+    .patch('/:id', controller.updateItemById);
+
+  done();
 };
 
 module.exports = setBasicRoutes;
