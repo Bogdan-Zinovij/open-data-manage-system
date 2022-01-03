@@ -1,17 +1,8 @@
 'use strict';
 
 const userController = require('../controllers/userController');
+const setBasicRoutes = require('../utils/setBasicRoutes');
 
-const setUserRoutes = (fastify, options, done) => {
-  fastify
-    .get('/', userController.getAllItems)
-    .post('/', userController.createNewItem)
-
-    .get('/:id', userController.getItemById)
-    .delete('/:id', userController.deleteItemById)
-    .patch('/:id', userController.updateItemById);
-
-  done();
-};
+const setUserRoutes = setBasicRoutes(userController);
 
 module.exports = setUserRoutes;

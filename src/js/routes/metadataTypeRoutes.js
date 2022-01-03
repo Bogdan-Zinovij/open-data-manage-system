@@ -1,17 +1,8 @@
 'use strict';
 
 const metadataTypeController = require('../controllers/metadataTypeController');
+const setBasicRoutes = require('../utils/setBasicRoutes');
 
-const setMetadataTypeRoutes = (fastify, options, done) => {
-  fastify
-    .get('/', metadataTypeController.getAllItems)
-    .post('/', metadataTypeController.createNewItem)
-
-    .get('/:id', metadataTypeController.getItemById)
-    .delete('/:id', metadataTypeController.deleteItemById)
-    .patch('/:id', metadataTypeController.updateItemById);
-
-  done();
-};
+const setMetadataTypeRoutes = setBasicRoutes(metadataTypeController);
 
 module.exports = setMetadataTypeRoutes;
