@@ -25,7 +25,7 @@
 
 ## About the project
 
-OMDS REST API - it's Node.js application which is created to model a communication with a simple web server and open data management system's database prototype and to perfom basic CRUD operations.
+ODMS REST API - it's Node.js application which is created to model a communication with a simple web server and open data management system's database prototype and to perfom basic CRUD operations.
 
 ### Built with
 
